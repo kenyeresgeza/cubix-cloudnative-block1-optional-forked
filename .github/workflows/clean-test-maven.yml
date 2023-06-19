@@ -1,15 +1,16 @@
-name: Running clean and test only on feature branches
+name: Running clean and test only on feature or CI branches
 
 on:
   push:
     branches:
       - '!main'
       - 'feature-**'
+      - 'ci/**'
   pull_request:
     branches:
       - '!main'
-      - '*'
-
+      - 'feature-**'
+      - 'ci/**'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,6 +22,5 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-        
     - name: Test with Maven
       run: mvn -B clean test --file pom.xml
