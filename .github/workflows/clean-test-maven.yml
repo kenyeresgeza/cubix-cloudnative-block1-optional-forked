@@ -3,12 +3,12 @@ name: Running clean and test only on feature branches
 on:
   push:
     branches:
-      - "!main"
-      - "*"
+      - '!main'
+      - 'feature-**'
   pull_request:
     branches:
-      - "!main"
-      - "*"
+      - '!main'
+      - '*'
 
 jobs:
   build:
